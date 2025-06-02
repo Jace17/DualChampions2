@@ -31,6 +31,12 @@ namespace DualChampions2
         public static readonly ManualLogSource Log = BepInEx.Logging.Logger.CreateLogSource("AddSubclassChampionCard");
         public static void Postfix(SaveManager __instance, AllGameData ___allGameData)
         {
+            if(__instance.HasAlliedChampion)
+            {
+                Log.LogInfo("Allied champion enabled via mutator, skipping subclass champion card addition.");
+                return;
+            }
+
             ClassData subclass = __instance.GetSubClass();
             if (__instance.HasCardById(subclass.GetChampionCard(__instance.GetSubChampionIndex()).GetID()))
             {
@@ -48,6 +54,12 @@ namespace DualChampions2
         public static readonly ManualLogSource Log = BepInEx.Logging.Logger.CreateLogSource("OverrideReturnToMap");
         public static bool Prefix(ChampionUpgradeScreen __instance, SaveManager ___saveManager, String ___targetChampionClassId, GrantableRewardData.Source ___rewardSource, RewardState ___rewardState, Action<GrantResult> ___rewardGrantedCallback)
         {
+            if (___saveManager.HasAlliedChampion)
+            {
+                Log.LogInfo("Allied champion enabled via mutator, skipping return to map override.");
+                return true;
+            }
+
             Log.LogInfo("Returning to map from ChampionUpgradeScreen...");
             if (___targetChampionClassId == ___saveManager.GetMainClass().GetID())
             {
@@ -79,7 +91,13 @@ namespace DualChampions2
         public static readonly ManualLogSource Log = BepInEx.Logging.Logger.CreateLogSource("SwapFirstAndSecondChampionCards");
         public static void Postfix(DeckScreen __instance, SaveManager ___saveManager, List<DeckScreen.CardInfo> ___cardInfos, DeckScreen.SortOrder ___sortOrder)
         {
-            if(___cardInfos.Count > 1 && ___sortOrder == DeckScreen.SortOrder.Default)
+            if (___saveManager.HasAlliedChampion)
+            {
+                Log.LogInfo("Allied champion enabled via mutator, skipping sort cards override.");
+                return;
+            }
+
+            if (___cardInfos.Count > 1 && ___sortOrder == DeckScreen.SortOrder.Default)
             {
                 DeckScreen.CardInfo firstCard = ___cardInfos[0];
                 DeckScreen.CardInfo secondCard = ___cardInfos[1];
