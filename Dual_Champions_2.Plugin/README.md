@@ -7,7 +7,7 @@ A mod for Monster Train 2 that lets you use both champions of the main clan and 
 - The champion of the allied clan is added to the deck at the start of the run.
 - The upgrade of the allied champion can be selected after the upgrade of the main champion.
 - The default sorting order is changed so the main champion is always first.
-- All features are automatically disabled if the "Team Up"" mutator is selected.
+- All features are automatically disabled if the "Team Up" mutator is selected.
 
 # Installation
 
