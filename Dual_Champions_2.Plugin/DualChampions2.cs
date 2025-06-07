@@ -60,6 +60,26 @@ namespace DualChampions2
                 return true;
             }
 
+            List<CardState> championCards = ___saveManager.GetDeckState().FindAll(cs => cs.IsChampionCard());
+            // Get Random Upgrade
+            if (___saveManager.GetMainClass() == ___saveManager.GetSubClass() || championCards.Count > 2)
+            {
+                Log.LogInfo("Same main and allied clan or more than two champion cards detected. Random upgrades will be given instead.");
+                foreach (CardState championCard in championCards)
+                {
+                    if (championCard.GetCardDataID() != ___saveManager.GetMainClass().GetChampionCard(___saveManager.GetMainChampionIndex()).GetID())
+                    {
+                        CardUpgradeTreeData upgradeTreeData = ChampionUpgradeRewardData.GetUpgradeTree(championCard.GetSpawnCharacterData(), ___saveManager.GetBalanceData());
+                        List<CardUpgradeData> upgrades = upgradeTreeData.GetRandomChoices(1, championCard);
+                        CardUpgradeState upgrade = new CardUpgradeState();
+                        upgrade.Setup(upgrades[0], false);
+                        championCard.Upgrade(upgrade, ___saveManager, true);
+                        championCard.RemoveEarlierTreeUpgrades(upgrade, upgradeTreeData);
+                    }
+                }
+                return true;
+            }
+
             Log.LogInfo("Returning to map from ChampionUpgradeScreen...");
             if (___targetChampionClassId == ___saveManager.GetMainClass().GetID())
             {
