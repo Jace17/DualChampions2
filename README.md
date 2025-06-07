@@ -8,7 +8,8 @@ A mod for Monster Train 2 that lets you use both champions of the main clan and 
 - The upgrade of the allied champion can be selected after the upgrade of the main champion.
 - The default sorting order is changed so the main champion is always first.
 - All features are automatically disabled if the "Team Up" mutator is selected.
-
+- If the main and allied clans are the same, or in cases when there are more than two champions, all the non-main champions are automatically given a random upgrade when the main champion is upgraded the first time. The next time the main champion gets upgraded, the other champions are automatically upgraded following the same upgrade path as their first upgrade.
+  
 # Installation
 
 Install via Thunderstore or manually: copy the mod contents to the 'BepInEx/plugins' folder of your Monster Train 2 installation directory.
