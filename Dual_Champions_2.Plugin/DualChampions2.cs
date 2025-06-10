@@ -1,11 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DualChampions2
 {
@@ -14,7 +9,7 @@ namespace DualChampions2
     {
         public const string pluginGuid = "com.jacelendro.dualchampions2";
         public const string pluginName = "Dual Champions 2";
-        public const string pluginVersion = "1.0";
+        public const string pluginVersion = "1.1.0";
 
         public void Awake()
         {
