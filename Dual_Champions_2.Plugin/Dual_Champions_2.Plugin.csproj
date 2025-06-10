@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>Dual_Champions_2.Plugin</RootNamespace>
     <LangVersion>latest</LangVersion>
-    <Version>0.1.0</Version>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
