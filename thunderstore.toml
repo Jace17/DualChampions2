@@ -4,7 +4,7 @@ schemaVersion = "0.0.1"
 [package]
 namespace = "GravitonGamer"
 name = "Dual_Champions_2"
-versionNumber = "1.1.0"
+versionNumber = "1.1.1"
 description = "A mod for Monster Train 2 that lets you use both champions of the main clan and the allied clan."
 websiteUrl = "https://github.com/Jace17/DualChampions2"
 containsNsfwContent = false
