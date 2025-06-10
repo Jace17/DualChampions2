@@ -17,3 +17,9 @@ Install via Thunderstore or manually: copy the mod contents to the 'BepInEx/plug
 # Warning
 
 This is a non-cosmetic mod that changes the game mechanics. Do not use it while playing any online mode as it may cause you to be banned.
+
+# Suggested Mods
+
+- [Upgrade Champions](https://thunderstore.io/c/monster-train-2/p/GravitonGamer/Upgrade_Champions_2/) - Apply upgrades to both of your champions
+  
+If you loved this or any of my other mods, feel free to [tip me a coffee.](https://ko-fi.com/gravitongamer)
