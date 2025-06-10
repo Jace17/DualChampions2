@@ -6,7 +6,7 @@ namespace = "GravitonGamer"
 name = "Dual_Champions_2"
 versionNumber = "1.0.4"
 description = "A mod for Monster Train 2 that lets you use both champions of the main clan and the allied clan."
-websiteUrl = "https://ko-fi.com/gravitongamer"
+websiteUrl = "https://github.com/Jace17/DualChampions2"
 containsNsfwContent = false
 
 [package.dependencies]
