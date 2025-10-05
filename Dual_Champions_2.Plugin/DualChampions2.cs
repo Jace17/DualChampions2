@@ -68,7 +68,7 @@ namespace DualChampions2
                         List<CardUpgradeData> upgrades = upgradeTreeData.GetRandomChoices(1, championCard);
                         CardUpgradeState upgrade = new CardUpgradeState();
                         upgrade.Setup(upgrades[0], false);
-                        championCard.Upgrade(upgrade, ___saveManager, true);
+                        championCard.ApplyPermanentUpgrade(upgrade, ___saveManager, true);
                         championCard.RemoveEarlierTreeUpgrades(upgrade, upgradeTreeData);
                     }
                 }
