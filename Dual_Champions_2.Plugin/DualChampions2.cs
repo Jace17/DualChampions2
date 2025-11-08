@@ -38,7 +38,7 @@ namespace DualChampions2
                 Log.LogInfo("Subclass champion card already exists.");
                 return;
             }
-            __instance.AddCardToDeck(subclass.GetChampionCard(__instance.GetSubChampionIndex()), null, false, 0, false, false, true, true);
+            __instance.AddCardToDeck(subclass.GetChampionCard(__instance.GetSubChampionIndex()), null, false, 0, false, false, true, false, true);
             Log.LogInfo($"Added subclass champion card: {subclass.GetChampionCard(__instance.GetSubChampionIndex()).GetName()}");
         }
     }
