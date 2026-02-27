@@ -26,7 +26,7 @@ namespace DualChampions2
         public static readonly ManualLogSource Log = BepInEx.Logging.Logger.CreateLogSource("AddSubclassChampionCard");
         public static void Postfix(SaveManager __instance, AllGameData ___allGameData)
         {
-            if(__instance.HasAlliedChampion)
+            if (__instance.HasAlliedChampion)
             {
                 Log.LogInfo("Allied champion enabled via mutator, skipping subclass champion card addition.");
                 return;
@@ -82,7 +82,7 @@ namespace DualChampions2
                 CardState subChampionCard = ___saveManager.GetDeckState().Find(cs => cs.IsChampionCard() && cs.GetCardDataID() == ___saveManager.GetSubClass().GetChampionCard(___saveManager.GetSubChampionIndex()).GetID());
                 CardUpgradeTreeData upgradeTreeData = ChampionUpgradeRewardData.GetUpgradeTree(subChampionCard.GetSpawnCharacterData(), ___saveManager.GetBalanceData());
 
-                ___rewardState.RemainingUses = 1;
+                ___rewardState.RemainingUses = ___rewardState.TotalUses;
 
                 GrantableRewardData.GrantParams grantParams = new GrantableRewardData.GrantParams
                 {
@@ -93,7 +93,8 @@ namespace DualChampions2
                 __instance.Setup(___saveManager.GetSubClass().GetID(), upgradeTreeData, grantParams, ___rewardGrantedCallback);
                 Log.LogInfo("Subclass Champion setup complete.");
                 return false;
-            } else 
+            }
+            else
             {
                 return true;
             }
