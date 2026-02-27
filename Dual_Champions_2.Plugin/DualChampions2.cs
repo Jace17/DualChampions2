@@ -60,16 +60,19 @@ namespace DualChampions2
             if (___saveManager.GetMainClass() == ___saveManager.GetSubClass() || championCards.Count > 2)
             {
                 Log.LogInfo("Same main and allied clan or more than two champion cards detected. Random upgrades will be given instead.");
-                foreach (CardState championCard in championCards)
+                for (int i = 0; i < ___rewardState.TotalUses; i++)
                 {
-                    if (championCard.GetCardDataID() != ___saveManager.GetMainClass().GetChampionCard(___saveManager.GetMainChampionIndex()).GetID())
+                    foreach (CardState championCard in championCards)
                     {
-                        CardUpgradeTreeData upgradeTreeData = ChampionUpgradeRewardData.GetUpgradeTree(championCard.GetSpawnCharacterData(), ___saveManager.GetBalanceData());
-                        List<CardUpgradeData> upgrades = upgradeTreeData.GetRandomChoices(1, championCard);
-                        CardUpgradeState upgrade = new CardUpgradeState();
-                        upgrade.Setup(upgrades[0], false);
-                        championCard.ApplyPermanentUpgrade(upgrade, ___saveManager, true);
-                        championCard.RemoveEarlierTreeUpgrades(upgrade, upgradeTreeData);
+                        if (championCard.GetCardDataID() != ___saveManager.GetMainClass().GetChampionCard(___saveManager.GetMainChampionIndex()).GetID())
+                        {
+                            CardUpgradeTreeData upgradeTreeData = ChampionUpgradeRewardData.GetUpgradeTree(championCard.GetSpawnCharacterData(), ___saveManager.GetBalanceData());
+                            List<CardUpgradeData> upgrades = upgradeTreeData.GetRandomChoices(1, championCard);
+                            CardUpgradeState upgrade = new CardUpgradeState();
+                            upgrade.Setup(upgrades[0], false);
+                            championCard.ApplyPermanentUpgrade(upgrade, ___saveManager, true);
+                            championCard.RemoveEarlierTreeUpgrades(upgrade, upgradeTreeData);
+                        }
                     }
                 }
                 return true;
